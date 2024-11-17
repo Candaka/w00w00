@@ -30,3 +30,4 @@ This is a decentralized social media platform built using the **Internet Compute
   ```bash
   sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 - Install Nodejs and Npm for frontend development
+- [Nodejs](https://nodejs.org/en)
