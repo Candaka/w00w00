@@ -29,3 +29,5 @@ This is a decentralized social media platform built using the **Internet Compute
 - Install the **DFX CLI** for ICP development:
   ```bash
   sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+- Install Nodejs and Npm for frontend development
+  [Nodejs official] (https://nodejs.org/en)
