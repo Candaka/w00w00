@@ -31,4 +31,12 @@ This is a decentralized social media platform built using the **Internet Compute
   sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 - Install Nodejs and Npm for frontend development in [here](https://nodejs.org/en)
 
+### Project Setup
+- Clone the repository
+  ```bash
+  git clone https://github.com/Candaka/w00w00
+  cd w00w00
+
+
+
 
