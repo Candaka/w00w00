@@ -34,7 +34,9 @@ This is a decentralized social media platform built using the **Internet Compute
 ### Project Setup
 - Clone the repository
   ```bash
-  git clone https://github.com/Candaka/w00w00
+  git clone https://github.com/Candaka/w00w00.git
+- Change your directory
+  ```bash
   cd w00w00
 
 
