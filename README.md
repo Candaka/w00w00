@@ -35,7 +35,17 @@ This is a decentralized social media platform built using the **Internet Compute
 - Clone the repository
   ```bash
   git clone https://github.com/Candaka/w00w00
+
+- Change the directory
+  ```bash
   cd w00w00
+
+- Install the frontend development
+  ```bash
+  sudo apt install npm
+- Install the npm
+  ```bash
+  npm start
 
 
 
