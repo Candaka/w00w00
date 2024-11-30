@@ -40,7 +40,7 @@ This is a decentralized social media platform built using the **Internet Compute
   git clone https://github.com/Candaka/w00w00.git
 - Change your directory
   ```bash
-  cd w00w00
+  cd civitas
 - Run the NPM
   ```bash
   npm start
