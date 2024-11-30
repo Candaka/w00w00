@@ -37,7 +37,7 @@ This is a decentralized social media platform built using the **Internet Compute
 ### Project Setup
 - Clone the repository
   ```bash
-  https://github.com/Candaka/civitas.git
+  git clone https://github.com/Candaka/civitas.git
 - Change your directory
   ```bash
   cd civitas
