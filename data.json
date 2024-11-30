@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "Hello, this is my first post!",
+      "fileUrl": "https://example.com/image1.jpg",
+      "likes": 10,
+      "comments": [
+        {
+          "id": 1,
+          "text": "Great post!"
+        },
+        {
+          "id": 2,
+          "text": "Keep it up!"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "content": "Another day, another post.",
+      "fileUrl": "https://example.com/image2.jpg",
+      "likes": 5,
+      "comments": []
+    }
+  ]
+}
