@@ -1,6 +1,3 @@
-import Debug "mo:base/Debug";
-import JSON "mo:json";
-
 actor SocialMediaPlatform {
 
     type PostId = Nat;
@@ -20,90 +17,44 @@ actor SocialMediaPlatform {
     };
 
     private var posts: [Post] = [];
+    private var nextPostId: PostId = 1;
+    private var nextCommentId: CommentId = 1;
 
-    // Fungsi untuk memuat JSON
-    public func loadPostsFromJSON(jsonString: Text): async Bool {
-        // Parse JSON string
-        let parsed = JSON.parse(jsonString);
-        switch (parsed) {
-            case (?jsonObj) {
-                // Parsing array "posts"
-                let jsonPosts = JSON.toVariant(jsonObj)["posts"];
-                switch (jsonPosts) {
-                    case (?jsonPostArray) {
-                        let postArray = JSON.toArray(jsonPostArray);
-                        for (jsonPost in postArray) {
-                            // Parsing setiap post
-                            let parsedPost = parsePost(jsonPost);
-                            switch (parsedPost) {
-                                case (?post) {
-                                    posts := Array.append(posts, [post]);
-                                };
-                                case null {
-                                    Debug.print("Failed to parse post.");
-                                };
-                            };
-                        };
-                        return true;
-                    };
-                    case null {
-                        Debug.print("Posts array not found.");
-                        return false;
-                    };
-                };
-            };
-            case null {
-                Debug.print("Invalid JSON format.");
-                return false;
-            };
+    public func createPost(content: Text, fileUrl: Text): async Bool {
+        let newPost = {
+            id = nextPostId;
+            content = content;
+            fileUrl = fileUrl;
+            likes = 0;
+            comments = [];
         };
+        posts := Array.append(posts, [newPost]);
+        nextPostId += 1;
+        return true;
     };
 
-    // Fungsi untuk memparsing post dari JSON
-    private func parsePost(jsonPost: JSON.JSON): ?Post {
-        let id = JSON.toNat(JSON.toVariant(jsonPost)["id"]);
-        let content = JSON.toText(JSON.toVariant(jsonPost)["content"]);
-        let fileUrl = JSON.toText(JSON.toVariant(jsonPost)["fileUrl"]);
-        let likes = JSON.toNat(JSON.toVariant(jsonPost)["likes"]);
-        let jsonComments = JSON.toVariant(jsonPost)["comments"];
-
-        if (id != null and content != null and fileUrl != null and likes != null) {
-            let comments: [Comment] = [];
-            switch (jsonComments) {
-                case (?commentArray) {
-                    let parsedComments = JSON.toArray(commentArray);
-                    for (jsonComment in parsedComments) {
-                        let parsedComment = parseComment(jsonComment);
-                        if (parsedComment != null) {
-                            comments := Array.append(comments, [parsedComment]);
-                        };
-                    };
-                };
-                case null {};
-            };
-            return ?{
-                id = id;
-                content = content;
-                fileUrl = fileUrl;
-                likes = likes;
-                comments = comments;
+    public func likePost(postId: PostId): async Bool {
+        for (index in 0 : Array.size(posts)) {
+            if (posts[index].id == postId) {
+                posts[index].likes += 1;
+                return true;
             };
         };
-        return null;
+        return false;
     };
 
-    // Fungsi untuk memparsing komentar dari JSON
-    private func parseComment(jsonComment: JSON.JSON): ?Comment {
-        let id = JSON.toNat(JSON.toVariant(jsonComment)["id"]);
-        let text = JSON.toText(JSON.toVariant(jsonComment)["text"]);
-
-        if (id != null and text != null) {
-            return ?{ id = id; text = text };
+    public func addComment(postId: PostId, text: Text): async Bool {
+        let comment = { id = nextCommentId; text = text };
+        for (index in 0 : Array.size(posts)) {
+            if (posts[index].id == postId) {
+                posts[index].comments := Array.append(posts[index].comments, [comment]);
+                nextCommentId += 1;
+                return true;
+            };
         };
-        return null;
+        return false;
     };
 
-    // Query semua post
     public query func getPosts(): async [Post] {
         return posts;
     };
