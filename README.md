@@ -3,6 +3,7 @@ This is a decentralized social media platform built using the **Internet Compute
 - Create posts with content and uploaded files.
 - Like posts.
 - Add comments to posts.
+![alt_text](https://github.com/Candaka/civitas/blob/main/logo.png?raw=true)
 
 ## Features
 1. **Decentralized Backend**: Powered by ICP's canister smart contracts.
