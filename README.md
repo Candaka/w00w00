@@ -1,5 +1,5 @@
 # Civitas
-This is a decentralized social media platform built using the **Internet Computer Protocol (ICP)**. The platform allows users to:
+Civitas is a decentralized social media platform built using the **Internet Computer Protocol (ICP)**. The platform allows users to:
 - Create posts with content and uploaded files.
 - Like posts.
 - Add comments to posts.
